@@ -6,7 +6,7 @@ https://developers.redhat.com/blog/2020/02/19/designing-an-event-driven-business
 
 === Local Execution
 
-Go to the *-service directory and run
+Go to the PHM-Rules-SB-service directory and using the configuration application.properties run
 [source,bash]
 ----
 . ./launch.sh clean install
@@ -36,6 +36,13 @@ Then post the following payload
 }
 ----
 to the url http://localhost:8090/rest/server/containers/instances/PHM-Rules-SB-kjar-1_0
+
+If you are developing use the configuration application-dev.properties and run
+[source,bash]
+----
+. ./launch-dev.sh clean install
+----
+with a controller up and running at port 8080.
 
 === Docker Execution
 
