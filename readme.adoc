@@ -1,0 +1,47 @@
+= Population Health Management
+
+Read this blog for more information:
+
+https://developers.redhat.com/blog/2020/02/19/designing-an-event-driven-business-process-at-scale-a-health-management-example-part-1/
+
+=== Local Execution
+
+Go to the *-service directory and run
+[source,bash]
+----
+. ./launch.sh clean install
+----
+Then post the following payload
+[source,json]
+----
+{
+	"lookup": "phm",
+    "commands": [
+        {
+            "insert": {
+                "object": {
+                    "com.health_insurance.phm_model.Trigger": {
+                        "triggerId": 74,
+                        "memberId": "xyz123"
+                    }
+                },
+                "out-identifier": "trigger",
+                "return-object": false
+            }
+        },
+        {
+            "fire-all-rules": {}
+        }
+    ]
+}
+----
+to the url http://localhost:8090/rest/server/containers/instances/PHM-Rules-SB-kjar-1_0
+
+=== Docker Execution
+
+With docker running, in the *-service directory run
+[source,bash]
+----
+. ./launch.sh clean install -Pdocker,h2
+----
+Then you should be able to continue as in the local execution.
