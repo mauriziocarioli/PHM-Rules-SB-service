@@ -1,14 +1,15 @@
-package com.health_insurance.service;
+package com.health_insurance.service.listeners;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.kie.api.event.rule.*;
 
 public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
+    private static final Logger LOG = LoggerFactory.getLogger(PHMTaskLifeCycleEventListener.class);
     /**
-     * @param event
-     * @return
      */
     public PHMRuleRuntimeEventListener() {
-        System.out.println(">>>>>>>>> PHMRuleRuntimeEventListene created.");
+        LOG.info(">>>>>>>>> PHMRuleRuntimeEventListene created.");
     }
 
 
@@ -16,7 +17,7 @@ public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
      * @param event
      */
     public void objectInserted(ObjectInsertedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Rule <<" +
                         //event.getRule().getName()+
                         ">> has caused Object (" +
@@ -32,7 +33,7 @@ public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
      * @param event
      */
     public void objectUpdated(ObjectUpdatedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Rule <<" +
                         //event.getRule().getName()+
                         ">> has caused Object (" +
@@ -48,7 +49,7 @@ public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
      * @param event
      */
     public void objectDeleted(ObjectDeletedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Rule <<" +
                         event.getRule().getName() +
                         ">> has caused Object (" +

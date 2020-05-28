@@ -26,7 +26,7 @@ if [ "$MVN_ARG_LINE" != "" ] ; then
     echo
     #the line below doesn't resolve the wildcard and models and kjars are not built
     #projects=( "*-model" "*-kjar" "PHM-Rules-SB-service")
-    projects=( "PHM-Rules-SB-model" "PHM-Rules-SB-kjar" "PHM-Rules-SB-service")
+    projects=( "PHM-Rules-SB-kjar" "PHM-Rules-SB-service")
 
     for suffix in "${projects[@]}"; do
 

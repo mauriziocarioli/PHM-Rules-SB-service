@@ -1,14 +1,15 @@
-package com.health_insurance.service;
+package com.health_insurance.service.listeners;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.kie.api.event.rule.*;
 
 public class PHMAgendaEventListener implements AgendaEventListener {
+    private static final Logger LOG = LoggerFactory.getLogger(PHMTaskLifeCycleEventListener.class);
     /**
-     * @param event
-     * @return
      */
     public PHMAgendaEventListener() {
-        System.out.println(">>>>>>>>> PHMAgendaEventListener created.");
+        LOG.info("PHMAgendaEventListener is registered.");
     }
 
     //****************/
@@ -19,7 +20,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void matchCreated(MatchCreatedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Match with Rule <<" +
                         event.getMatch().getRule().getName() +
                         ">> was created."
@@ -30,7 +31,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void matchCancelled(MatchCancelledEvent event) {
-        System.out.println(
+        LOG.info(
                 "Match with Rule <<" +
                         event.getMatch().getRule().getName() +
                         ">> was cancelled."
@@ -41,7 +42,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void beforeMatchFired(BeforeMatchFiredEvent event) {
-        System.out.println(
+        LOG.info(
                 "Match with Rule <<" +
                         event.getMatch().getRule().getName() +
                         ">> is about to fire."
@@ -52,7 +53,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void afterMatchFired(AfterMatchFiredEvent event) {
-        System.out.println("Match with Rule <<" +
+        LOG.info("Match with Rule <<" +
                 event.getMatch().getRule().getName() +
                 ">> has fired."
         );
@@ -66,7 +67,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void agendaGroupPopped(AgendaGroupPoppedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Agenda Group <<" +
                         event.getAgendaGroup().getName() +
                         ">> has been popped."
@@ -77,7 +78,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void agendaGroupPushed(AgendaGroupPushedEvent event) {
-        System.out.println("Agenda Group <<" +
+        LOG.info("Agenda Group <<" +
                 event.getAgendaGroup().getName() +
                 ">> has been pushed."
         );
@@ -91,7 +92,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void beforeRuleFlowGroupActivated(RuleFlowGroupActivatedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Rule Flow Group <<" +
                         event.getRuleFlowGroup().getName() +
                         ">> is about to be activated."
@@ -102,7 +103,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void afterRuleFlowGroupActivated(RuleFlowGroupActivatedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Rule Flow Group <<" +
                         event.getRuleFlowGroup().getName() +
                         ">> has been activated."
@@ -113,7 +114,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void beforeRuleFlowGroupDeactivated(RuleFlowGroupDeactivatedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Rule Flow Group <<" +
                         event.getRuleFlowGroup().getName() +
                         ">> is about to be deactivated."
@@ -124,7 +125,7 @@ public class PHMAgendaEventListener implements AgendaEventListener {
      * @param event
      */
     public void afterRuleFlowGroupDeactivated(RuleFlowGroupDeactivatedEvent event) {
-        System.out.println(
+        LOG.info(
                 "Rule Flow Group <<" +
                         event.getRuleFlowGroup().getName() +
                         ">> has been deactivated."
