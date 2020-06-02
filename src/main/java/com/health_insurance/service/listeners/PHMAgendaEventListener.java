@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.kie.api.event.rule.*;
 
 public class PHMAgendaEventListener implements AgendaEventListener {
-    private static final Logger LOG = LoggerFactory.getLogger(PHMTaskLifeCycleEventListener.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PHMAgendaEventListener.class);
     /**
      */
     public PHMAgendaEventListener() {
-        LOG.info("PHMAgendaEventListener is registered.");
+        LOG.info("Registered PHMAgendaEventListener.");
     }
 
     //****************/

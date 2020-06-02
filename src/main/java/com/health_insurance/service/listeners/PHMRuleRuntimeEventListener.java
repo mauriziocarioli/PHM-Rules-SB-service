@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.kie.api.event.rule.*;
 
 public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
-    private static final Logger LOG = LoggerFactory.getLogger(PHMTaskLifeCycleEventListener.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PHMRuleRuntimeEventListener.class);
     /**
      */
     public PHMRuleRuntimeEventListener() {
-        LOG.info(">>>>>>>>> PHMRuleRuntimeEventListene created.");
+        LOG.info("Registered PHMRuleRuntimeEventListene.");
     }
 
 
@@ -17,13 +17,21 @@ public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
      * @param event
      */
     public void objectInserted(ObjectInsertedEvent event) {
+        if (event.getRule() == null) {
+            LOG.info("Rule is null.");
+        } else if (event.getRule().getName() == null) {
+            LOG.info("Rule name is null.");
+        }
+        if (event.getObject() == null) {
+            LOG.info("Object is null.");
+        }
         LOG.info(
                 "Rule <<" +
                         //event.getRule().getName()+
                         ">> has caused Object (" +
-                        //event.getObject().toString()+
+                        event.getObject().toString()+
                         ") of class <<" +
-                        //event.getObject().getClass().getName()+
+                        event.getObject().getClass().getName()+
                         ">> to be inserted."
         );
     }
@@ -37,7 +45,7 @@ public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
                 "Rule <<" +
                         //event.getRule().getName()+
                         ">> has caused Object (" +
-                        //event.getObject().toString()+
+                        event.getObject().toString()+
                         ") of class <<" +
                         //event.getObject().getClass().getName()+
                         ">> to be updated."
@@ -51,9 +59,9 @@ public class PHMRuleRuntimeEventListener implements RuleRuntimeEventListener {
     public void objectDeleted(ObjectDeletedEvent event) {
         LOG.info(
                 "Rule <<" +
-                        event.getRule().getName() +
+                        //event.getRule().getName() +
                         ">> has caused Object (" +
-                        //event.getOldObject().toString()+
+                        event.getOldObject().toString()+
                         ") of class <<" +
                         //event.getOldObject().getClass().getName()+
                         ">> to be deleted."
